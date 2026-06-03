@@ -1,4 +1,5 @@
-const port = 4000;
+require("dotenv").config();
+const port = process.env.PORT || 4000;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -15,7 +16,7 @@ app.use(express.json()); //request to response that will automatically pass thro
 app.use(cors()); //react project connect to express app to 4000 port
 
 // Database connection with MongoDB
-mongoose.connect("mongodb+srv://ecommerceweb:ecom1234@cluster0.553bf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }).then(() => {
@@ -193,7 +194,7 @@ app.post('/signup',async (req,res)=>{
     }
 
     //create token will not be readable
-    const token = jwt.sign(data,'secret_ecom');
+    const token = jwt.sign(data, process.env.JWT_SECRET);
     res.json({success:true,token})
 
 })
@@ -210,7 +211,7 @@ app.post('/login', async (req,res)=>{
                     id:user.id
                 }
             }
-            const token = jwt.sign(data,'secret_ecom');
+            const token = jwt.sign(data, process.env.JWT_SECRET);
             res.json({success:true,token});
         }
         else{
@@ -246,7 +247,7 @@ app.get('/popularinwomen', async (req,res)=>{
         }
         else{
             try{
-                const data = jwt.verify(token,'secret_ecom');
+                const data = jwt.verify(token, process.env.JWT_SECRET);
                 req.user = data.user;
                 next();
             }
