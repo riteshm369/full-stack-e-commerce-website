@@ -19,7 +19,7 @@ const LoginSignup = () => {
     console.log("login Function Executed",formData);
     // getting the data an input field
     let responseData;
-    await fetch('http://localhost:4000/login',{
+    await fetch('https://full-stack-e-commerce-website-ordn.onrender.com/login',{
       method:'POST',
       headers:{
         Accept:'application/form-data',
@@ -42,7 +42,7 @@ const LoginSignup = () => {
     console.log("Signup Function Executed",formData)
     // getting the data an input field
     let responseData;
-    await fetch('http://localhost:4000/signup',{
+    await fetch('https://full-stack-e-commerce-website-ordn.onrender.com/signup',{
       method:'POST',
       headers:{
         Accept:'application/form-data',
