@@ -8,7 +8,7 @@ const NewCollections = () => {
   const [new_collection,setNew_collection] = useState([]);
 
   useEffect(()=>{
-    fetch('https://full-stack-e-commerce-website-ordn.onrender.com/newcollections')
+    fetch('https://full-stack-e-commerce-website-zpii.onrender.com/newcollections')
     .then((response)=>response.json())
     .then((data)=>setNew_collection(data));
   },[])

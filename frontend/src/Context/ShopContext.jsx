@@ -16,13 +16,13 @@ const ShopContextProvider = (props) => {
     const [cartItems,setCartItems] = useState(getDefaultCart());
     
     useEffect(()=>{
-        fetch('https://full-stack-e-commerce-website-ordn.onrender.com/allproducts')
+        fetch('https://full-stack-e-commerce-website-zpii.onrender.com/allproducts')
         .then((response)=>response.json())
         .then((data)=>setAll_Product(data))
 
         // auth token is available loged in and start data will be fetch and save it in Shop context
         if(localStorage.getItem('auth-token')){
-            fetch('https://full-stack-e-commerce-website-ordn.onrender.com/getcart',{
+            fetch('https://full-stack-e-commerce-website-zpii.onrender.com/getcart',{
                 method:'POST',
                 headers:{
                     Accept:'appilcation/form-data',
@@ -40,7 +40,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
         if(localStorage.getItem('auth-token')){
-            fetch('https://full-stack-e-commerce-website-ordn.onrender.com/addtocart',{
+            fetch('https://full-stack-e-commerce-website-zpii.onrender.com/addtocart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -57,7 +57,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
         if(localStorage.getItem('auth-token')){
-            fetch('https://full-stack-e-commerce-website-ordn.onrender.com/removefromcart',{
+            fetch('https://full-stack-e-commerce-website-zpii.onrender.com/removefromcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',

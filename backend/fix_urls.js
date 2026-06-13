@@ -23,7 +23,7 @@ async function fixUrls() {
         let updatedCount = 0;
         for (const product of products) {
             if (product.image && product.image.includes('http://localhost:4000')) {
-                const newUrl = product.image.replace('http://localhost:4000', 'https://full-stack-e-commerce-website-ordn.onrender.com');
+                const newUrl = product.image.replace('http://localhost:4000', 'https://full-stack-e-commerce-website-zpii.onrender.com');
                 product.image = newUrl;
                 await product.save();
                 updatedCount++;
